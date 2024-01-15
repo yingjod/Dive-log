@@ -1,17 +1,15 @@
-import { Outlet, Link } from "react-router-dom"
-
+import { Outlet } from "react-router-dom"
+import Footer from './components/Footer'
+import Nav from "./components/Nav"
 
 function App() {
 return(
 <>
-  <nav>
-    <Link to="/">Home</Link>&nbsp;
-    <Link to="/login">Login</Link>&nbsp;
-    <Link to="/register">Register</Link>
-  </nav>
+  <Nav />
+
   <Outlet />
-  <footer>dovelog.co</footer>
-  <a href='https://github.com/yingjod'>Github</a>
+
+  <Footer />
 
 </> 
   )

@@ -7,7 +7,9 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import DivelogSingle  from './components/DivelogSingle '
 
-import {getAllDivelog, getSingleDivelog }  from './loaders/divelog'
+import {getAllDivelog, getSingleDivelog }  from './utilities/loaders/divelog.js'
+import { registerUser, loginUser } from './utilities/actions/auth.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const router = createBrowserRouter([
@@ -21,11 +23,13 @@ const router = createBrowserRouter([
       },
       {
         path:'/login',
-        element:<Login />
+        element:<Login />,
+        action: async ({ request }) => loginUser(request),
       },
       {
         path:'/register',
-        element:<Register />
+        element:<Register />,
+        action: async ({ request }) => registerUser(request),
       },
       {
         path:'/profile',

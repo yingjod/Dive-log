@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom"
+import '../styles/main.scss';
 
 
 export default function divelogAll(){
