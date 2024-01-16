@@ -1,16 +1,18 @@
 import '../styles/main.scss';
 import {Form, useActionData, useNavigate} from 'react-router-dom'
+import { setToken } from '../utilities/helpers/common'
 import { useEffect } from 'react';
 
 export default function Login(){
 
 
   const res = useActionData()
-  console.log(res)
+  console.log(res)  
   const navigate = useNavigate()
 
   useEffect(() => {
     if (res?.status === 200) {
+      setToken(res.data.access)
       navigate('/profile')
     }
   }, [res, navigate])

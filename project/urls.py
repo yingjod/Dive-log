@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/',include('users.urls')),
     path('api/divelog/',include('divelog.urls')),
-    path('api/divespot/',include('divespot.urls'))
+    path('api/divespot/',include('divespot.urls')),
 ]

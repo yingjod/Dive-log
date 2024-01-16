@@ -6,9 +6,10 @@ export async function getAllDivelog() {
   return data;
 }
 
-export async function getSingleDivelog(_id){
-  const res = await fetch(`http://localhost:8000/api/divelog/${_id}`)
+export async function getSingleDivelog(id){
+  const res = await fetch(`http://localhost:8000/api/divelog/${id}`)
   const data = await res.json(); 
   console.log(data); 
   return data;
 }
+

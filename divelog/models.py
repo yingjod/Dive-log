@@ -1,5 +1,6 @@
 from django.db import models
 from rest_framework import serializers
+from datetime import date
 
 # Create your models here.
 class divelog(models.Model):
@@ -12,7 +13,7 @@ class divelog(models.Model):
     null = True
     )
 
-  date = serializers.DateField()
+  date = models.DateField(default=date.today) 
   divespot = models.ForeignKey(
     to = 'divespot.divespot', 
     on_delete=models.CASCADE,
