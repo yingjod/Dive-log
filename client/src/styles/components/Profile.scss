@@ -1,0 +1,44 @@
+.dive-log-all {
+  margin-right: 100px;
+  margin-left: 100px;
+  padding-top: 50px;
+}
+
+.dive-log-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.dive-log-card {
+  margin: 10px;
+}
+
+.dive-log-allbg{
+background-color: #112031;
+}
+
+.loading{
+  width: 20%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-dive-logs{
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  p{
+    font-size: 50px;
+    color: white;
+  }
+}
+
+.create-link{
+  font-size: 40px
+}

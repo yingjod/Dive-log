@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+.alllogin {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:152D35;
+
+}
+
+.wrapper {
+  margin-top: auto; // 垂直方向上居中
+  margin-bottom: auto; // 垂直方向上居中
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  padding: 34px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    
+  }
+
+  form {
+    margin-top: 30px;
+    margin-left:10px;
+
+    .input-box {
+      height: 52px;
+      margin: 18px 0;
+
+      input,button {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+
+        &:focus,
+        &:valid {
+          border-color: #4070f4;
+        }
+      }
+    }
+
+    .input-box.button {
+      button {
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #152D35;
+        cursor: pointer;
+
+        &:hover {
+          background: #345B63;
+        }
+      }
+    }
+
+    .text {
+      h3 {
+        color: #333;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+
+        a {
+          color: #4070f4;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.image-mask{
+  width: 50%;
+  margin-left: 100px; 
+}
+
+
+.block{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}

@@ -14,10 +14,11 @@ class divelog(models.Model):
     )
 
   date = models.DateField(default=date.today) 
+
   divespot = models.ForeignKey(
     to = 'divespot.divespot', 
     on_delete=models.CASCADE,
-    related_name='divespot_divelog',
+    related_name='divelog_divespot',
     null = True
     )
   pickTanks = models.CharField(max_length=255)

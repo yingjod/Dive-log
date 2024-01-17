@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         action: async ({ request }) => createDivelog(request),
       },
       {
-        path:'/divelog/:divelogId',
+        path:'/divelog/:divelogId/edit',
         element:<DivelogEdit />,
         action: async ({ request, params }) => editDivelog(request, params.divelogId),
         loader: async ({ params }) => getSingleDivelog(params.divelogId)

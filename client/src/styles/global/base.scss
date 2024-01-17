@@ -1,4 +1,25 @@
-h1{
-  color: green;
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #112031;
+  font-family: 'Prompt', sans-serif
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

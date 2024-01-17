@@ -27,6 +27,7 @@ export default function DivelogCreate(){
 
   const res = useActionData()
   const navigate = useNavigate()
+  console.log(res)
 
   useEffect(() => {
 
@@ -38,15 +39,20 @@ export default function DivelogCreate(){
 
   return(
 <>
-  <h1>Create Dive-log</h1>
+
+<div className='allcreate'>
   
-  <Form method="post"  >
-    <input type="date" name="date" placeholder='date' />
+  
+  <Form method="post"  className='wrapper'>
+  <h1>Create Dive-log</h1>
+    <input type="date" name="date" placeholder='date' className='block' style={{marginTop:'15px',height:'52px'}}/>
 
     <select
           name="divespot"
           value={selectedDivespot}
           onChange={(e) => setSelectedDivespot(e.target.value)}
+          className='block'
+          style={{marginTop:'15px',height:'52px'}}
         >
           <option value="">Select Divespot</option>
           {divespotOptions.map((divespot) => (
@@ -56,19 +62,20 @@ export default function DivelogCreate(){
           ))}
         </select>
 
-    <input type="number" name="pickTanks" placeholder='pickTanks' />
-    <input type="number" name="depth" placeholder='depth' />
-    <input type="number" name="divingtime" placeholder='divingtime' />
-    <input type="number" name="weight" placeholder='weight' />
-    <input type="number" name="temperature" placeholder='temperature' />
-    <input type="number" name="visibility" placeholder='visibility' />
-    <input type="text" name="suit" placeholder='suit' />
-    <input type="text" name="partner" placeholder='partner' />
-    <textarea type="text" name="note" placeholder='note' />
-    <button type="submit">Create</button>
+    <input type="number" name="pickTanks" placeholder='Pick tanks(L)' className='block' style={{marginTop:'15px',height:'52px'}}/>
+    <input type="number" name="depth" placeholder='Depth(m)' className='block' style={{marginTop:'15px',height:'52px'}} />
+    <input type="number" name="divingtime" placeholder='Diving time(min)' className='block' style={{marginTop:'15px',height:'52px'}}/>
+    <input type="number" name="weight" placeholder='Weight(kg)'className='block' style={{marginTop:'15px',height:'52px'}}/>
+    <input type="number" name="temperature" placeholder='Temperature(°C)' className='block'style={{marginTop:'15px',height:'52px'}}/>
+    <input type="number" name="visibility" placeholder='Visibility(m)'className='block' style={{marginTop:'15px',height:'52px'}}/>
+    <input type="text" name="suit" placeholder='Suit(Dry/Wet/Short)' className='block'style={{marginTop:'15px',height:'52px'}}/>
+    <input type="text" name="partner" placeholder='Partner(name)' className='block'style={{marginTop:'15px',height:'52px'}}/>
+    <textarea type="text" name="note" placeholder='Note' className='block' style={{marginTop:'15px',height:'52px'}}/>
+    <button type="submit" style={{marginTop:'15px',height:'52px', width:'150px'}}>Create</button>
 
     {res && <p>{res.data.bio}</p>}
   </Form>
+  </div>
   </>
   )}
 

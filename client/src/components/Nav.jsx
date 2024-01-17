@@ -10,7 +10,7 @@ import { activeUser, removeToken } from '../utilities/helpers/common'
 
 export default function divelogNav(){
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleLogOut(){
     // Remove token from storage

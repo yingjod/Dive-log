@@ -15,20 +15,44 @@ export default function Register(){
     }
   }, [res, navigate])
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, []);
+
+
   return(
     <>
+    <div className='alllogin'>
+      
+        <Form method="post" className='wrapper' >
         <h1>Register</h1>
-        <Form method="post" >
 
-          <input type="text" name="username" placeholder='Username' />
-          <input type='email' name='email' placeholder='Email'/>
-          <input type="password" name="password" placeholder='Password' />
-          <input type="password" name="password_confirmation" placeholder='Confirm Password' />
-          <button type="submit">Register</button>
+        <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
+
+          <input type="text" name="username" placeholder='Username' className='block' />
+          </div>
+          <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
+          <input type="text" name="bio" placeholder='bio' className='block'/>
+          </div>
+          <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
+          <input type='email' name='email' placeholder='Email' className='block'/>
+          </div>
+          <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
+          <input type="password" name="password" placeholder='Password' className='block' />
+          </div>
+          <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
+          <input type="password" name="password_confirmation" placeholder='Confirm Password' className='block'/>
+          </div>
+          <div className="input-box button" style={{marginTop:'20px'}}>
+          <button type="submit" style={{marginTop:'15px',height:'52px', width:'150px'}}>Register</button>
+          </div>
           {res && <p>{res.data.bio}</p>}
 
         </Form>
-
+    </div>
     </>
       );
     }

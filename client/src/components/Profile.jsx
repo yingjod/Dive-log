@@ -3,11 +3,17 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getToken, activeUser } from '../utilities/helpers/common'
 import '../styles/main.scss';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
+import loading from '../images/Loading.gif'
+
 
 
 export default function divelogAll() {
   const [diveLogs, setDiveLogs] = useState({});
   const [filteredDiveLogs, setFilteredDiveLogs] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const loggedInUserId = activeUser()
 
@@ -29,6 +35,7 @@ export default function divelogAll() {
 
           setDiveLogs(filteredDiveLogs);
           setFilteredDiveLogs(filteredDiveLogs)
+          setIsLoading(false);
 
 
         } else {
@@ -51,6 +58,8 @@ export default function divelogAll() {
         },
       });
       console.log('Dive log deleted:', response);
+
+      window.location.reload();
       const { data: updatedDiveLogs } = await axios.get('http://localhost:8000/api/divelog', {
         headers: {
           Authorization: `Bearer ${getToken()}`,
@@ -59,11 +68,11 @@ export default function divelogAll() {
       // Update the component state
       setDiveLogs(updatedDiveLogs);
 
-      // 更新 filteredDiveLogs
+      // filteredDiveLogs
       const updatedFilteredDiveLogs = updatedDiveLogs.filter(diveLog => diveLog.user?.id === loggedInUserId);
       setFilteredDiveLogs(updatedFilteredDiveLogs);
 
-      navigate('/profile', { replace: true });
+      // navigate('/profile', { replace: true });
 
     } catch (error) {
       console.error('Error deleting review:', error);
@@ -75,47 +84,56 @@ export default function divelogAll() {
     }
   }
 
-
   return (
-    <>
-      <h1>Dive Logs</h1>
-      {getToken() ? (
-        <div>
-          {filteredDiveLogs && filteredDiveLogs.length > 0 ? (
-            <div className="dive-log-container">
-              {filteredDiveLogs.map((diveLog) => (
-                <div key={diveLog.id} className="dive-log-card">
-                  <Link to={`/divelog/${diveLog.id}`} className="card-link">
-                    <div className="card" style={{ width: '20rem' }}>
-                      <div className="card-body">
-                        <h5 className="text-center bold card-title">{diveLog.partner}</h5>
-                        <p>{diveLog.note}</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <div className="dive-log-actions">
-                    <Link to={`/divelog/${diveLog.id}`} className="edit-link">Edit Dive Log</Link>
-                    <button className="delete-btn" onClick={() => handleDeleteDiveLog(diveLog.id)}>Delete</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="no-dive-logs">
-              <p>You have not created any dive logs yet!</p>
-              <Link to={'/divelog/create'} className='create-link'>Create Dive Log</Link>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div>
-          <p>Please log in to view your dive logs.</p>
-          <Link to="/login" className="login-link">Log In</Link>
-        </div>
-      )}
-    </>
 
-  )
+    <div className="dive-log-allbg">
+      <div className="dive-log-all">
+        {getToken() ? (
+          <div className="dive-log-each">
+
+            {isLoading ? ( // 判斷是否還在載入資料
+              // <p className="loading">Loading...</p>
+              <img src={loading} alt="Git Icon" className="loading" />
+            ) : (
+              <>
+                {filteredDiveLogs && filteredDiveLogs.length > 0 ? (
+                  <div className="dive-log-container">
+                    {filteredDiveLogs
+                      .sort((a, b) => new Date(b.date) - new Date(a.date))
+                      .map((diveLog) => (
+                        <div key={diveLog.id} className="dive-log-card">
+                          <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={diveLog.divespot.image} />
+                            <Card.Body>
+                              <Card.Title>Date:{diveLog.date}</Card.Title>
+                              <Card.Text>{diveLog.note}</Card.Text>
+                              <Button variant="primary" as={Link} to={`/divelog/${diveLog.id}/edit`} >Edit</Button>
+                              <Button variant="primary" onClick={() => handleDeleteDiveLog(diveLog.id)} style={{ marginLeft: '5px' }}>Delete</Button>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                      ))}
+                  </div>
+                ) : (
+                  <div className="no-dive-logs">
+                    <p>You have not created any dive logs yet!</p>
+                    <Link to={'/divelog/create'} className='create-link'>Create My First Dive-Log !</Link>
+                  </div>
+                )}
+                </>
+            )}
+              </div >
+            ) : (
+            <div>
+              <p>Please log in to view your dive logs.</p>
+              <Link to="/login" className="login-link">Log In</Link>
+            </div>
+
+
+            )
+        }
+          </div>
+    </div>
+      );
 
 }
-

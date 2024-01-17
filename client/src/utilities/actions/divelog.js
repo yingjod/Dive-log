@@ -26,17 +26,22 @@ export async function createDivelog(request){
   return await axios.post('http://localhost:8000/api/divelog/', data, {
     validateStatus: () => true,
     headers:{
-      Authorization:`Bearer ${getToken()}`
+      Authorization:`Bearer ${getToken()}`,
+      'Content-Type': 'application/json'
     }
   })
 }
 
-export async function editDivelog(request){
+export async function editDivelog(request,id){
   const data = await formToObj(request)
-  return await axios.put(`http://localhost:8000/api/divelog/${id}`, data, {
+  console.log('PATCH request data:', data);
+  return await axios.patch(`http://localhost:8000/api/divelog/${id}/`, data, {
     validateStatus: () => true,
     headers: {
-      Authorization: `Bearer ${getToken()}`
+      Authorization: `Bearer ${getToken()}`,
+      'Content-Type': 'application/json'
     }
   })
 }
+
+
