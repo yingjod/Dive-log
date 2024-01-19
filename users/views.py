@@ -5,5 +5,5 @@ from django.contrib.auth import get_user_model
 User = get_user_model() 
 
 class RegisterView(CreateAPIView):
-  queryset = User.objects.all()
+  queryset = User.objects.select_related()
   serializer_class = RegisterationSerializer

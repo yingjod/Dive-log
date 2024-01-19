@@ -11,7 +11,7 @@ from lib.permissions import IsOwnerOrReadOnly
 #Path:/divelog/
 #Methods: GET, POST
 class DivelistCreateView(OwnerListCreateView):
-  queryset = divelog.objects.all()
+  queryset = divelog.objects.select_related()
   permission_classes =[IsAuthenticatedOrReadOnly]
 
   def get_serializer_class(self):
@@ -22,7 +22,7 @@ class DivelistCreateView(OwnerListCreateView):
 #Path:/divelog/:pk/
 #Methods: GET, PUT, PATCH, DELETE
 class DivelogDetailView(RetrieveUpdateDestroyAPIView):
-  queryset = divelog.objects.all()
+  queryset = divelog.objects.select_related()
   permission_classes =[IsOwnerOrReadOnly]
 
   def get_serializer_class(self):

@@ -9,7 +9,7 @@ from .serializers.common import DivespotSerializer
 #Path:/divespot/
 #Methods: GET, POST
 class DivespotListCreateView(ListCreateAPIView):
-  queryset = divespot.objects.all()
+  queryset = divespot.objects.select_related()
   serializer_class = DivespotSerializer
   permission_classes =[IsAuthenticatedOrReadOnly]
 

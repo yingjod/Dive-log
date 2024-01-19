@@ -17,7 +17,7 @@ export default function Footer() {
         <Row className='footer'>
           <Col>
             <Link target='_blank' to='https://github.com/yingjod' className='links'>
-            <FontAwesomeIcon icon={faGithub} /> Ying Li</Link>
+            <FontAwesomeIcon icon={faGithub} /> YL</Link>
           </Col>
         </Row>
       </Container>

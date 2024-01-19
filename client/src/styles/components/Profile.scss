@@ -42,3 +42,29 @@ background-color: #112031;
 .create-link{
   font-size: 40px
 }
+
+.cardtitle{
+  color:#152D35;
+  background-color: #D4ECDD;
+  border-radius: 5px;
+  text-align: center;
+  padding:20px;
+}
+
+.cardinfo{
+  margin-top: 20px;
+  padding:20px;
+  color:#112031;
+  background-color: #D4ECDD;
+  border-radius: 5px;
+  text-align: center;
+  size: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cardinfo > * {
+  width: 48%; /* 調整欄位寬度，確保在兩欄中平均分佈 */
+  margin-bottom: 10px; /* 調整元素之間的垂直間距 */
+}

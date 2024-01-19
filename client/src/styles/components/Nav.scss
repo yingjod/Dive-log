@@ -6,3 +6,21 @@ margin-Left: 70px;
 .navstyle{
   font-size: 20px;
 }
+
+.mid{
+  font-size: 28px;
+  display: flex; 
+  flex-direction: row; 
+}
+
+@media only screen and (max-width: 768px) {
+  .divelog-logo{
+    height: 50px;
+    }
+  .mid{
+    font-size: 20px;
+    display: flex; 
+    flex-direction: row; 
+  }
+}
+

@@ -103,12 +103,26 @@ export default function divelogAll() {
                       .map((diveLog) => (
                         <div key={diveLog.id} className="dive-log-card">
                           <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={diveLog.divespot.image} />
+                            <Card.Img variant="top" src={diveLog.divespot.image} style={{ height: '220px' }}/>
                             <Card.Body>
-                              <Card.Title>Date:{diveLog.date}</Card.Title>
+                              <div className="cardtitle">
+                              <Card.Title style={{  fontWeight:'bold'}}> {diveLog.date}</Card.Title>
+                              <Card.Title style={{ color: '#345B63' }}>{diveLog.divespot.spotname}</Card.Title>
+                              <Card.Text >- with {diveLog.partner}</Card.Text>
                               <Card.Text>{diveLog.note}</Card.Text>
-                              <Button variant="primary" as={Link} to={`/divelog/${diveLog.id}/edit`} >Edit</Button>
-                              <Button variant="primary" onClick={() => handleDeleteDiveLog(diveLog.id)} style={{ marginLeft: '5px' }}>Delete</Button>
+                              </div>
+                              <div className="cardinfo">
+                              <Card.Text>TANKS:{diveLog.pickTanks}L</Card.Text>
+                              <Card.Text>DEPTH:{diveLog.depth}m</Card.Text>
+                              <Card.Text>TIME:{diveLog.divingtime}mins</Card.Text>
+                              <Card.Text>TEMP:{diveLog.temperature}°C</Card.Text>
+                              <Card.Text>VIS:{diveLog.visibility}m</Card.Text>
+                              <Card.Text>SUIT:{diveLog.suit}</Card.Text>
+                              </div>
+                              <Button variant="primary" as={Link} to={`/divelog/${diveLog.id}/edit`} style={{ marginTop:'10px',backgroundColor: 'grey', borderColor: 'grey' }}>
+                                Edit</Button>
+                              <Button variant="primary" onClick={() => handleDeleteDiveLog(diveLog.id)} style={{ marginLeft: '5px', marginTop:'10px',backgroundColor: 'grey' , borderColor: 'grey'}}>Delete
+                              </Button>
                             </Card.Body>
                           </Card>
                         </div>

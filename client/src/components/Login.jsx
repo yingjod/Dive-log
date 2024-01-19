@@ -2,8 +2,13 @@ import '../styles/main.scss';
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import { setToken } from '../utilities/helpers/common'
 import { useEffect } from 'react';
+import mask from '../images/diving-mask-snorkel-svgrepo-com.png'
 
 export default function Login() {
+
+  const res = useActionData()
+  console.log(res)
+  const navigate = useNavigate()
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -13,74 +18,36 @@ export default function Login() {
     };
   }, []);
 
-
-  const res = useActionData()
-  console.log(res)
-  const navigate = useNavigate()
-
   useEffect(() => {
     if (res?.status === 200) {
       setToken(res.data.access)
       navigate('/profile')
+    } else if (res?.status === 401) {
+      console.error('Authentication failed:', res.data.detail);
     }
   }, [res, navigate])
 
   return (
     <>
       <div className='alllogin'>
-
         <Form method="post" className='wrapper' >
           <h2>Login</h2>
-          <div className='input-box input' style={{marginTop:'15px',height:'52px'}}>
-            <input type="text" name="email" placeholder='Email' className='block' required/>
+          <div className='input-box input' style={{ marginTop: '15px', height: '52px' }}>
+            <input type="text" name="email" placeholder='Email' className='block' required />
           </div>
-          <div className='input-box'style={{marginTop:'15px',height:'52px'}} >
-            <input type="password" name="password" placeholder='Password' className='block' required/>
+          <div className='input-box' style={{ marginTop: '15px', height: '52px' }} >
+            <input type="password" name="password" placeholder='Password' className='block' required />
           </div>
-          <div className="input-box button" style={{marginTop:'20px'}}>
-            <button type="submit" style={{marginTop:'15px',height:'52px', width:'150px'}}>Login</button>
+          <div className='dangertext'>
+          {res && <p>{res.data.detail}</p>}
+          </div>  
+          <div className="input-box button">
+            <button type="submit" style={{marginTop: '15px',height: '52px', width: '150px' }}>Login</button>
           </div>
-          {res && <p>{res.data.bio}</p>}
+          <h3 style={{ marginTop: '15px', fontSize: '15px' }}>Don't Have an Account? <a href="/register">Register</a></h3>
         </Form>
-
+        <img src={mask} className='image-mask' />
       </div>
-
     </>
   );
 }
-
-
-// import '../styles/main.scss';
-// import {Form, useActionData, useNavigate} from 'react-router-dom'
-// import { setToken } from '../utilities/helpers/common'
-// import { useEffect } from 'react';
-
-// export default function Login(){
-
-
-//   const res = useActionData()
-//   console.log(res)  
-//   const navigate = useNavigate()
-
-//   useEffect(() => {
-//     if (res?.status === 200) {
-//       setToken(res.data.access)
-//       navigate('/profile')
-//     }
-//   }, [res, navigate])
-
-//   return(
-//     <>
-//         <h1>Login</h1>
-//         <Form method="post" >
-
-//           <input type="text" name="email" placeholder='Email' />
-//           <input type="password" name="password" placeholder='Password' />
-//           <button type="submit">Login</button>
-//           {res && <p>{res.data.bio}</p>}
-
-//         </Form>
-
-//     </>
-//       );
-//     }
