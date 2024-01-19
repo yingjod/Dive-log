@@ -1,11 +1,7 @@
-
-
-  @media only screen and (max-width: 768px) {
-    .homeimg{
-      height: 100%;
-      height: 100vh;
-      object-fit:contain;
-      }
+@media only screen and (max-width: 768px) {
+  .homeimg {
+    height: 100%;
+    height: 100vh;
+    object-fit: contain;
   }
-
-  
+}

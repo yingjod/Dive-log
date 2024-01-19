@@ -1,17 +1,21 @@
 import { useLoaderData } from "react-router-dom"
 import { Form, useActionData, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
-import '../styles/main.scss';
-import { Link } from 'react-router-dom'
 
+//Styling
+import '../styles/main.scss';
 
 export default function DivelogEdit() {
 
+  const res = useActionData()
+  const navigate = useNavigate()
+  const divelog = useLoaderData()
+
   const [divespotOptions, setDivespotOptions] = useState([]);
+  const [selectedDivespot, setSelectedDivespot] = useState(divelog.divespot.id);
 
-
+  //Divespot dropdown
   useEffect(() => {
-
     const fetchDivespotOptions = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/divespot/')
@@ -22,16 +26,11 @@ export default function DivelogEdit() {
         console.error('Error fetching divespot options:', error);
       }
     };
-
     fetchDivespotOptions();
   }, []);
 
-  const res = useActionData()
-  const navigate = useNavigate()
-  const divelog = useLoaderData()
-
   useEffect(() => {
-    console.log('useeffect',res)
+    console.log('useeffect', res)
     if (res?.status === 200) {
       console.log(res)
       console.log('created successfully')
@@ -40,8 +39,6 @@ export default function DivelogEdit() {
       console.error('Bad Request:', res.data);
     }
   }, [res, navigate]);
-
-  const [selectedDivespot, setSelectedDivespot] = useState(divelog.divespot.id);
 
   return (
     <>
@@ -57,7 +54,6 @@ export default function DivelogEdit() {
             className='block' style={{ marginTop: '15px', height: '52px' }}
             required
           >
-
             <option value="">Select Divespot</option>
             {divespotOptions.map((divespot) => (
               <option key={divespot.id} value={divespot.id} >
@@ -75,8 +71,7 @@ export default function DivelogEdit() {
           <input type="text" name="suit" placeholder='Suit(Dry/Wet/Short)' defaultValue={divelog.suit} className='block' style={{ marginTop: '15px', height: '52px' }} />
           <input type="text" name="partner" placeholder='Partner(name)' defaultValue={divelog.partner} className='block' style={{ marginTop: '15px', height: '52px' }} />
           <textarea type="text" name="note" placeholder='Note' defaultValue={divelog.note} className='block' style={{ marginTop: '15px', height: '52px' }} />
-          <button type="submit"  style={{marginTop:'15px',height:'52px', width:'150px'}}>Complete</button>
-
+          <button type="submit" style={{ marginTop: '15px', height: '52px', width: '150px' }}>Complete</button>
           {res && <p>{res.data.bio}</p>}
         </Form>
       </div>

@@ -1,26 +1,26 @@
-.divelog-logo{
-height: 100px;
-margin-Left: 70px;
+.divelog-logo {
+  height: 100px;
+  margin-Left: 70px;
 }
 
-.navstyle{
+.navstyle {
   font-size: 20px;
 }
 
-.mid{
+.mid {
   font-size: 28px;
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
 }
 
 @media only screen and (max-width: 768px) {
-  .divelog-logo{
+  .divelog-logo {
     height: 50px;
-    }
-  .mid{
+  }
+
+  .mid {
     font-size: 20px;
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: row;
   }
 }
-

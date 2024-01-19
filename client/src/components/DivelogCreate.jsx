@@ -1,14 +1,20 @@
 import { Form, useActionData, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
+
+//Styling
 import '../styles/main.scss';
 
 export default function DivelogCreate() {
 
+  const res = useActionData()
+  const navigate = useNavigate()
+  console.log('res', res)
+
   const [divespotOptions, setDivespotOptions] = useState([]);
   const [selectedDivespot, setSelectedDivespot] = useState({});
 
+  //Divespot dropdown
   useEffect(() => {
-
     const fetchDivespotOptions = async () => {
       try {
         const response = await fetch('http://localhost:8000/api/divespot/')
@@ -19,16 +25,10 @@ export default function DivelogCreate() {
         console.error('Error fetching divespot options:', error);
       }
     };
-
     fetchDivespotOptions();
   }, []);
 
-  const res = useActionData()
-  const navigate = useNavigate()
-  console.log('res', res)
-
   useEffect(() => {
-
     if (res?.status === 201) {
       console.log('created successfully')
       navigate(`/profile`)

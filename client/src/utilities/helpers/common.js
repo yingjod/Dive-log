@@ -1,27 +1,25 @@
 
-
 const tokenName = 'DIVELOG-TOKEN'
 
 // This function takes a request object and returns form data as a JS object
-export async function formToObj(request){
+export async function formToObj(request) {
   const formData = await request.formData()
   return Object.fromEntries(formData.entries())
 }
 
-
-export function setToken(token){
+export function setToken(token) {
   localStorage.setItem(tokenName, token)
 }
 
-export function getToken(){
+export function getToken() {
   return localStorage.getItem(tokenName)
 }
 
-export function removeToken(){
+export function removeToken() {
   localStorage.removeItem(tokenName)
 }
 
-export function activeUser(){
+export function activeUser() {
 
   const token = getToken()
   if (!token) return null

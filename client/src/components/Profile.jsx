@@ -1,21 +1,26 @@
+import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { getToken, activeUser } from '../utilities/helpers/common'
-import '../styles/main.scss';
+
+//Bootstrap components
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
+//Styling
 import loading from '../images/Loading.gif'
-
+import '../styles/main.scss';
 
 
 export default function divelogAll() {
-  const [diveLogs, setDiveLogs] = useState({});
-  const [filteredDiveLogs, setFilteredDiveLogs] = useState([])
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+
+  const navigate = useNavigate()
   const loggedInUserId = activeUser()
+
+  const [diveLogs, setDiveLogs] = useState({})
+  const [filteredDiveLogs, setFilteredDiveLogs] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
 
 
   useEffect(() => {
@@ -29,14 +34,12 @@ export default function divelogAll() {
           })
 
           const loggedInUserId = activeUser();
-
           const filteredDiveLogs = diveLogs.filter(diveLog => diveLog.user?.id === loggedInUserId);
           console.log(filteredDiveLogs)
 
           setDiveLogs(filteredDiveLogs);
           setFilteredDiveLogs(filteredDiveLogs)
           setIsLoading(false);
-
 
         } else {
           navigate('/login')
@@ -46,7 +49,6 @@ export default function divelogAll() {
       }
     }
     getUserDiveLogs()
-
   }, [])
 
 
@@ -58,21 +60,21 @@ export default function divelogAll() {
         },
       });
       console.log('Dive log deleted:', response);
+      // Reload page
+      window.location.reload()
 
-      window.location.reload();
       const { data: updatedDiveLogs } = await axios.get('http://localhost:8000/api/divelog', {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },
       });
+
       // Update the component state
       setDiveLogs(updatedDiveLogs);
 
       // filteredDiveLogs
       const updatedFilteredDiveLogs = updatedDiveLogs.filter(diveLog => diveLog.user?.id === loggedInUserId);
       setFilteredDiveLogs(updatedFilteredDiveLogs);
-
-      // navigate('/profile', { replace: true });
 
     } catch (error) {
       console.error('Error deleting review:', error);
@@ -90,9 +92,7 @@ export default function divelogAll() {
       <div className="dive-log-all">
         {getToken() ? (
           <div className="dive-log-each">
-
-            {isLoading ? ( // 判斷是否還在載入資料
-              // <p className="loading">Loading...</p>
+            {isLoading ? (
               <img src={loading} alt="Git Icon" className="loading" />
             ) : (
               <>
@@ -103,25 +103,25 @@ export default function divelogAll() {
                       .map((diveLog) => (
                         <div key={diveLog.id} className="dive-log-card">
                           <Card style={{ width: '18rem' }}>
-                            <Card.Img variant="top" src={diveLog.divespot.image} style={{ height: '220px' }}/>
+                            <Card.Img variant="top" src={diveLog.divespot.image} style={{ height: '220px' }} />
                             <Card.Body>
                               <div className="cardtitle">
-                              <Card.Title style={{  fontWeight:'bold'}}> {diveLog.date}</Card.Title>
-                              <Card.Title style={{ color: '#345B63' }}>{diveLog.divespot.spotname}</Card.Title>
-                              <Card.Text >- with {diveLog.partner}</Card.Text>
-                              <Card.Text>{diveLog.note}</Card.Text>
+                                <Card.Title style={{ fontWeight: 'bold' }}> {diveLog.date}</Card.Title>
+                                <Card.Title style={{ color: '#345B63' }}>{diveLog.divespot.spotname}</Card.Title>
+                                <Card.Text >- with {diveLog.partner}</Card.Text>
+                                <Card.Text>{diveLog.note}</Card.Text>
                               </div>
                               <div className="cardinfo">
-                              <Card.Text>TANKS:{diveLog.pickTanks}L</Card.Text>
-                              <Card.Text>DEPTH:{diveLog.depth}m</Card.Text>
-                              <Card.Text>TIME:{diveLog.divingtime}mins</Card.Text>
-                              <Card.Text>TEMP:{diveLog.temperature}°C</Card.Text>
-                              <Card.Text>VIS:{diveLog.visibility}m</Card.Text>
-                              <Card.Text>SUIT:{diveLog.suit}</Card.Text>
+                                <Card.Text>TANKS:{diveLog.pickTanks}L</Card.Text>
+                                <Card.Text>DEPTH:{diveLog.depth}m</Card.Text>
+                                <Card.Text>TIME:{diveLog.divingtime}mins</Card.Text>
+                                <Card.Text>TEMP:{diveLog.temperature}°C</Card.Text>
+                                <Card.Text>VIS:{diveLog.visibility}m</Card.Text>
+                                <Card.Text>SUIT:{diveLog.suit}</Card.Text>
                               </div>
-                              <Button variant="primary" as={Link} to={`/divelog/${diveLog.id}/edit`} style={{ marginTop:'10px',backgroundColor: 'grey', borderColor: 'grey' }}>
+                              <Button variant="primary" as={Link} to={`/divelog/${diveLog.id}/edit`} style={{ marginTop: '10px', backgroundColor: 'grey', borderColor: 'grey' }}>
                                 Edit</Button>
-                              <Button variant="primary" onClick={() => handleDeleteDiveLog(diveLog.id)} style={{ marginLeft: '5px', marginTop:'10px',backgroundColor: 'grey' , borderColor: 'grey'}}>Delete
+                              <Button variant="primary" onClick={() => handleDeleteDiveLog(diveLog.id)} style={{ marginLeft: '5px', marginTop: '10px', backgroundColor: 'grey', borderColor: 'grey' }}>Delete
                               </Button>
                             </Card.Body>
                           </Card>
@@ -134,20 +134,18 @@ export default function divelogAll() {
                     <Link to={'/divelog/create'} className='create-link'>Create My First Dive-Log !</Link>
                   </div>
                 )}
-                </>
+              </>
             )}
-              </div >
-            ) : (
-            <div>
-              <p>Please log in to view your dive logs.</p>
-              <Link to="/login" className="login-link">Log In</Link>
-            </div>
-
-
-            )
-        }
+          </div >
+        ) : (
+          <div>
+            <p>Please log in to view your dive logs.</p>
+            <Link to="/login" className="login-link">Log In</Link>
           </div>
+        )
+        }
+      </div>
     </div>
-      );
+  );
 
 }

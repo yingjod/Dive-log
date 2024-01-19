@@ -1,15 +1,16 @@
+import { useEffect } from 'react';
+
+//Styling
 import '../styles/main.scss';
 import Image from 'react-bootstrap/Image';
-import Homeimg from '../images/REGISTER.png';
-import  { useEffect } from 'react';
+import Homeimg from '../images/Homeimg.png'
+
 
 export default function Home() {
 
+  //Disable scrolling
   useEffect(() => {
-    // 在首頁進入時禁用滾動
     document.body.style.overflow = 'hidden';
-
-    // 在組件卸載時（可能是切換到其他頁面），啟用滾動
     return () => {
       document.body.style.overflow = 'visible';
     };

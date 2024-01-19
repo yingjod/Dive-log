@@ -7,7 +7,6 @@ from .serializers.populated import DivelogListSerializer
 from lib.views import OwnerListCreateView
 from lib.permissions import IsOwnerOrReadOnly
 
-
 #Path:/divelog/
 #Methods: GET, POST
 class DivelistCreateView(OwnerListCreateView):

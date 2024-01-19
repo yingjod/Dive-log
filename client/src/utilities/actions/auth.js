@@ -7,13 +7,12 @@ export async function registerUser(request) {
   })
 }
 
-export async function loginUser(request){
+export async function loginUser(request) {
   const data = await formToObj(request)
   return await axios.post('http://localhost:8000/api/auth/login/', data, {
     validateStatus: () => true
   })
 }
-
 
 async function formToObj(request) {
   const formData = await request.formData()

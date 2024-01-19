@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //Styles
 import './styles/main.scss'
@@ -15,46 +15,46 @@ import DivelogCreate from './components/DivelogCreate'
 import DivelogEdit from './components/DivelogEdit'
 
 //Loaders
-import {getAllDivelog, getSingleDivelog}  from './utilities/loaders/divelog.js'
+import { getAllDivelog, getSingleDivelog } from './utilities/loaders/divelog.js'
 
 //Action
 import { registerUser, loginUser } from './utilities/actions/auth.js'
-import {createDivelog, editDivelog} from './utilities/actions/divelog.js'
+import { createDivelog, editDivelog } from './utilities/actions/divelog.js'
 
 
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App />,
-    children:[
+    path: '/',
+    element: <App />,
+    children: [
       {
-        path:'/',
-        element:<Home />
+        path: '/',
+        element: <Home />
       },
       {
-        path:'/login',
-        element:<Login />,
+        path: '/login',
+        element: <Login />,
         action: async ({ request }) => loginUser(request),
       },
       {
-        path:'/register',
-        element:<Register />,
+        path: '/register',
+        element: <Register />,
         action: async ({ request }) => registerUser(request),
       },
       {
-        path:'/profile',
-        element:<Profile />,
+        path: '/profile',
+        element: <Profile />,
         loader: getAllDivelog
       },
       {
-        path:'/divelog/create',
-        element:<DivelogCreate />,
+        path: '/divelog/create',
+        element: <DivelogCreate />,
         action: async ({ request }) => createDivelog(request),
       },
       {
-        path:'/divelog/:divelogId/edit',
-        element:<DivelogEdit />,
+        path: '/divelog/:divelogId/edit',
+        element: <DivelogEdit />,
         action: async ({ request, params }) => editDivelog(request, params.divelogId),
         loader: async ({ params }) => getSingleDivelog(params.divelogId)
       }
@@ -63,5 +63,5 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <RouterProvider router={router} />
 )

@@ -1,8 +1,10 @@
-import '../styles/main.scss';
 import { Form, useActionData, useNavigate } from 'react-router-dom'
 import { setToken } from '../utilities/helpers/common'
 import { useEffect } from 'react';
-import mask from '../images/diving-mask-snorkel-svgrepo-com.png'
+
+//Styling
+import '../styles/main.scss';
+import mask from '../images/diving-mask-snorkel.png'
 
 export default function Login() {
 
@@ -10,9 +12,9 @@ export default function Login() {
   console.log(res)
   const navigate = useNavigate()
 
+  //Disable scrolling
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.body.style.overflow = 'visible';
     };
@@ -38,11 +40,11 @@ export default function Login() {
           <div className='input-box' style={{ marginTop: '15px', height: '52px' }} >
             <input type="password" name="password" placeholder='Password' className='block' required />
           </div>
-          <div className='dangertext'>
-          {res && <p>{res.data.detail}</p>}
-          </div>  
           <div className="input-box button">
-            <button type="submit" style={{marginTop: '15px',height: '52px', width: '150px' }}>Login</button>
+            <button type="submit" style={{ marginTop: '15px', height: '52px', width: '150px' }}>Login</button>
+          </div>
+          <div style={{ color: 'red' }}>
+            {res && <p>{res.data.detail}</p>}
           </div>
           <h3 style={{ marginTop: '15px', fontSize: '15px' }}>Don't Have an Account? <a href="/register">Register</a></h3>
         </Form>

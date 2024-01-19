@@ -31,7 +31,5 @@ class divelog(models.Model):
   partner = models.CharField(max_length=255) 
   note = models.TextField(max_length=2000)
 
-  
-
   def __str__(self):
     return f'{self.date} - {self.divespot}'

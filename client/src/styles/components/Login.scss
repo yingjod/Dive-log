@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-
 .alllogin {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:152D35;
-
+  background-color: 152D35;
 }
 
 .wrapper {
-  margin-top: auto; // 垂直方向上居中
-  margin-bottom: auto; // 垂直方向上居中
+  margin-top: auto;
+  margin-bottom: auto;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -30,23 +28,21 @@
     font-size: 22px;
     font-weight: 600;
     color: #333;
-    
+
   }
 
   form {
     margin-top: 30px;
-    margin-left:10px;
+    margin-left: 10px;
   }
 }
 
-
-.image-mask{
+.image-mask {
   width: 17%;
-  margin-left: 100px; 
+  margin-left: 100px;
 }
 
-
-.block{
+.block {
   height: 100%;
   width: 100%;
   outline: none;
@@ -60,7 +56,7 @@
   transition: all 0.3s ease;
 }
 
-.dangertext{
+.dangertext {
   color: red;
   font-size: 13px;
   margin-top: 10px;
