@@ -27,7 +27,7 @@ export default function divelogAll() {
     async function getUserDiveLogs() {
       try {
         if (getToken()) {
-          const { data: diveLogs } = await axios.get(`http://localhost:8000/api/divelog`, {
+          const { data: diveLogs } = await axios.get(`http://localhost:8000/api/divelog/`, {
             headers: {
               Authorization: `Bearer ${getToken()}`,
             },
@@ -54,7 +54,7 @@ export default function divelogAll() {
 
   const handleDeleteDiveLog = async (diveLogId) => {
     try {
-      const response = await axios.delete(`http://localhost:8000/api/divelog/${diveLogId}`, {
+      const response = await axios.delete(`http://localhost:8000/api/divelog/${diveLogId}/`, {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },
@@ -63,7 +63,7 @@ export default function divelogAll() {
       // Reload page
       window.location.reload()
 
-      const { data: updatedDiveLogs } = await axios.get('http://localhost:8000/api/divelog', {
+      const { data: updatedDiveLogs } = await axios.get('http://localhost:8000/api/divelog/', {
         headers: {
           Authorization: `Bearer ${getToken()}`,
         },

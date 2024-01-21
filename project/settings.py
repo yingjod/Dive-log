@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import environ
+import os
+import django_on_heroku
 
 env = environ.Env()
 environ.Env.read_env()
@@ -30,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dive-log-tw-9e1427271c2b.herokuapp.com']
 
 
 # Application definition
@@ -75,7 +77,8 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'client')] #Look, we have added the root folder of frontend here
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,6 +147,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -153,5 +158,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #django-cors-headers
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", 
+    "http://localhost:5173",
+    "http://localhost:8000", 
+    "http://127.0.0.1:8000",
 ]
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'client', "dist"),
+)
+
+django_on_heroku.settings(locals())
