@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dive-log-tw-9e1427271c2b.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
