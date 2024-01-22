@@ -3,7 +3,7 @@ import { formToObj, getToken } from "../helpers/common"
 
 export async function createDivelog(request) {
   const data = await formToObj(request)
-  return await axios.post('http://localhost:8000/api/divelog/', data, {
+  return await axios.post('/api/divelog/', data, {
     validateStatus: () => true,
     headers: {
       Authorization: `Bearer ${getToken()}`,
@@ -15,7 +15,7 @@ export async function createDivelog(request) {
 export async function editDivelog(request, id) {
   const data = await formToObj(request)
   console.log('PATCH request data:', data);
-  return await axios.patch(`http://localhost:8000/api/divelog/${id}/`, data, {
+  return await axios.patch(`/api/divelog/${id}/`, data, {
     validateStatus: () => true,
     headers: {
       Authorization: `Bearer ${getToken()}`,

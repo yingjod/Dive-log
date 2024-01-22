@@ -17,7 +17,7 @@ export default function DivelogCreate() {
   useEffect(() => {
     const fetchDivespotOptions = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/divespot/')
+        const response = await fetch('/api/divespot/')
         const data = await response.json()
         console.log('Divespot data:', data)
         setDivespotOptions(data)
