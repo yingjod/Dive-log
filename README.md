@@ -24,7 +24,7 @@ If you want it to run locally on your machine:
 
 I allocated a total of 10 days for the completion of this project as a solo.
 
-# Technologies Used
+## Technologies Used
 
  - Frontend: React.js, Bootstrap, React Router Dom, MDB React UI Kit
  - Backend: Node.js, Express.js, Django
@@ -34,7 +34,7 @@ I allocated a total of 10 days for the completion of this project as a solo.
  - Libraries: Font Awesome (Font Awesome SVG Core, Free Brands SVG Icons, React Font Awesome)
  - Deployment: Heroku (for hosting the application)
 
-# Brief
+## Brief
 
 ![Brief1](/client/src/images/readme/brief1.png)
 ![Brief2](/client/src/images/readme/brief2.png)
@@ -42,7 +42,7 @@ I allocated a total of 10 days for the completion of this project as a solo.
 
 
 
-# Planning
+## Planning
 
 The website will consist of four main pages: a login page, a registration page, a user profile page, and a page for creating and editing dive logs. I’ll leverage Django to handle backend data management, utilising models for users and dive logs. For the front end, I'll combine Bootstrap and React to build responsive and user-friendly interfaces.
 
@@ -50,7 +50,7 @@ The website will consist of four main pages: a login page, a registration page, 
 ![plan2](/client/src/images/readme/plan2.png)
 
 
-# Build/Code Process
+## Build/Code Process
 
 Day 1: Defined website goals and created wireframes and a DBD.
 Day 2: Backend setup: Create a backend database using Python Django and establish a one-to-many relationship between DiveLog, DiveSpot, and the User.
@@ -72,25 +72,27 @@ Day 6: Established the Edit Divelog, Create Divelog, Home, and Profile pages to 
 Day 7: Implemented error handling for the Login and Register pages and resolved data-related issues on the Create page.
 Day 8-9: Deployed the project on Heroku.
 
-# Challenges
+## Challenges
 
 - Setting up the create page as it's not smoothly sending information to the backend. 
 - I need to specify the error handling return message.
 - When attempting to upload the project to Heroku, encountering issues with CORS prevents successful deployment.
 
-# Wins
+## Wins
 
 One specific win from this project is the successful implementation of user authentication and profile management. Creating functional login and register pages, along with a user profile that allows users to create and edit dive logs, demonstrates my proficiency in both backend and front-end development. This achievement highlights my ability to integrate different components seamlessly and deliver a cohesive user experience.
 
 
-# Key Learnings/Takeaways
+## Key Learnings/Takeaways
 
 Establish the connection between backend and frontend for a project.
 
 
-# Bugs
+## Bugs
+
+No bugs
 
 
-# Future Improvements
+## Future Improvements
 
 I'd like to incorporate a feature on the webpage that allows users to add new dive spots, and I also aim to enhance the link design in the footer.
